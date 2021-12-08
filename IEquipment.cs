@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CharacterCreator
 {
-    public class OrkFactory : ICharacterFactory
+    public interface IEquipment
     {
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CharacterCreator
 {
-    public class ElfFactory : ICharacterFactory
+    public interface ICharacterClass
     {
     }
 }
