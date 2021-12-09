@@ -6,5 +6,8 @@ namespace CharacterCreator
 {
     public interface IEquipment
     {
+        public List<string> getPropertiesList();
+        public double getWeight();
+        public void setWeight(double weight);
     }
 }

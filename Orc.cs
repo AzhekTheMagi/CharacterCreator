@@ -4,53 +4,27 @@ using System.Text;
 
 namespace CharacterCreator
 {
-    public class Orc : Orks
+    public class Orc : IRace
     {
-        private string description = "Orcs are savage humanoids with stooped postures, piggish faces, and prominent teeth that resemble tusks.";
-        private string skill = "Intimidation";
-        private int hitPoints = 15;
-        private List<int> statList;
+        private string description = "Orcs are disfigured humanoid carnivores, standing approximately 5'11 to 6'2, " +
+            "weighing from 180 to 280 lbs. They are easily noticeable due to their green to gray skin, lupine ears, " +
+            "lower canines resembling boar tusks, and their muscular builds. Orcs stand in a bent over shape making " +
+            "them appear as ape-like humans.";
+        private string name;
 
-        public override void setStatList(int str, int dex, int con, int smarts, int wis, int cha)
+        public string getName()
         {
-            statList = new List<int>()
-            {
-                str,    //Strength
-                dex,    //Dexterity
-                con,    //Constitution
-                smarts, //Intelligence
-                wis,    //Wisdom
-                cha     //Charm
-            };
+            return this.name;
         }
 
-        public override List<int> getStatList()
+        public void setName(string name)
         {
-            return this.statList;
+            this.name = name;
         }
 
-        public override string getName()
-        {
-            return base.name;
-        }
-
-        public override void setName(string name)
-        {
-            base.name = name;
-        }
-
-        public override string getDescription()
+        public string getDescription()
         {
             return this.description;
-        }
-        public override string getSkill()
-        {
-            return this.skill;
-        }
-
-        public override int getHitPoints()
-        {
-            return this.hitPoints;
         }
     }
 }

@@ -6,5 +6,7 @@ namespace CharacterCreator
 {
     public interface ICharacterClass
     {
+        public int getTraitValue();
+        public string getTrait();
     }
 }
