@@ -32,5 +32,15 @@ namespace CharacterCreator
         {
             base.weight = weight;
         }
+
+        public override string getName()
+        {
+            return base.name;
+        }
+
+        public override void setName(string name)
+        {
+            base.name = name;
+        }
     }
 }

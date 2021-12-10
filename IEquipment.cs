@@ -9,5 +9,7 @@ namespace CharacterCreator
         public List<string> getPropertiesList();
         public double getWeight();
         public void setWeight(double weight);
+        public string getName();
+        public void setName(string name);
     }
 }
