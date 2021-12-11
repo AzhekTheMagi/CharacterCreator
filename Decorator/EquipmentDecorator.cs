@@ -22,5 +22,15 @@ namespace CharacterCreator.Decorator
         {
             this.equipment.setWeight(weight);
         }
+
+        public string getName()
+        {
+            return this.equipment.getName();
+        }
+
+        public void setName(string name)
+        {
+            this.equipment.setName(name);
+        }
     }
 }

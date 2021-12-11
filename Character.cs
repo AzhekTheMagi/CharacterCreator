@@ -1,10 +1,11 @@
-﻿using System;
+﻿using CharacterCreator.Observer;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CharacterCreator
 {
-    public class Character
+    public class Character : IEquipmentObserver
     {
         string name;
         string gender;
@@ -19,6 +20,11 @@ namespace CharacterCreator
             this.race = race;
             this.characterClass = characterClass;
             this.equipmentList = new List<IEquipment>();
+        }
+
+        public void update(IEquipment equipment)
+        {
+            //do something
         }
 
         public IRace getRace()
