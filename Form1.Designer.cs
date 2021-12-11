@@ -29,12 +29,11 @@ namespace CharacterCreator
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.CharacterEquipmentList = new System.Windows.Forms.ListBox();
+            this.addEquipmentButton = new System.Windows.Forms.Button();
+            this.characterEquipmentList = new System.Windows.Forms.ListBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.listView2 = new System.Windows.Forms.ListView();
             this.label4 = new System.Windows.Forms.Label();
             this.listView3 = new System.Windows.Forms.ListView();
@@ -42,39 +41,43 @@ namespace CharacterCreator
             this.ClassLabel = new System.Windows.Forms.Label();
             this.raceComboBox = new System.Windows.Forms.ComboBox();
             this.characterClassComboBox = new System.Windows.Forms.ComboBox();
+            this.characterEquipmentLabel = new System.Windows.Forms.Label();
+            this.characterListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // button1
+            // addEquipmentButton
             // 
-            this.button1.Location = new System.Drawing.Point(25, 175);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(159, 34);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Add Equipment";
-            this.button1.UseVisualStyleBackColor = true;
+            this.addEquipmentButton.Location = new System.Drawing.Point(509, 25);
+            this.addEquipmentButton.Name = "addEquipmentButton";
+            this.addEquipmentButton.Size = new System.Drawing.Size(182, 34);
+            this.addEquipmentButton.TabIndex = 0;
+            this.addEquipmentButton.Text = "Add Equipment";
+            this.addEquipmentButton.UseVisualStyleBackColor = true;
+            this.addEquipmentButton.Click += new System.EventHandler(this.addEquipmentButton_Click);
             // 
-            // CharacterEquipmentList
+            // characterEquipmentList
             // 
-            this.CharacterEquipmentList.FormattingEnabled = true;
-            this.CharacterEquipmentList.ItemHeight = 25;
-            this.CharacterEquipmentList.Location = new System.Drawing.Point(25, 224);
-            this.CharacterEquipmentList.Name = "CharacterEquipmentList";
-            this.CharacterEquipmentList.Size = new System.Drawing.Size(182, 104);
-            this.CharacterEquipmentList.TabIndex = 3;
+            this.characterEquipmentList.FormattingEnabled = true;
+            this.characterEquipmentList.ItemHeight = 25;
+            this.characterEquipmentList.Location = new System.Drawing.Point(509, 126);
+            this.characterEquipmentList.Name = "characterEquipmentList";
+            this.characterEquipmentList.Size = new System.Drawing.Size(182, 104);
+            this.characterEquipmentList.TabIndex = 3;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(25, 346);
+            this.button2.Location = new System.Drawing.Point(25, 153);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(159, 34);
+            this.button2.Size = new System.Drawing.Size(182, 34);
             this.button2.TabIndex = 5;
             this.button2.Text = "Create Character";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(310, 13);
+            this.label2.Location = new System.Drawing.Point(25, 205);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(117, 25);
             this.label2.TabIndex = 6;
@@ -89,15 +92,6 @@ namespace CharacterCreator
             this.label3.TabIndex = 7;
             this.label3.Text = "Party Inventory";
             // 
-            // listView1
-            // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(310, 41);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(182, 146);
-            this.listView1.TabIndex = 8;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
             // listView2
             // 
             this.listView2.HideSelection = false;
@@ -110,7 +104,7 @@ namespace CharacterCreator
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(580, 13);
+            this.label4.Location = new System.Drawing.Point(509, 256);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(141, 25);
             this.label4.TabIndex = 10;
@@ -119,7 +113,7 @@ namespace CharacterCreator
             // listView3
             // 
             this.listView3.HideSelection = false;
-            this.listView3.Location = new System.Drawing.Point(580, 41);
+            this.listView3.Location = new System.Drawing.Point(509, 296);
             this.listView3.Name = "listView3";
             this.listView3.Size = new System.Drawing.Size(182, 146);
             this.listView3.TabIndex = 11;
@@ -137,7 +131,7 @@ namespace CharacterCreator
             // ClassLabel
             // 
             this.ClassLabel.AutoSize = true;
-            this.ClassLabel.Location = new System.Drawing.Point(25, 91);
+            this.ClassLabel.Location = new System.Drawing.Point(25, 77);
             this.ClassLabel.Name = "ClassLabel";
             this.ClassLabel.Size = new System.Drawing.Size(131, 25);
             this.ClassLabel.TabIndex = 13;
@@ -162,17 +156,38 @@ namespace CharacterCreator
             "Sorcerer",
             "Ranger",
             "Barbarian"});
-            this.characterClassComboBox.Location = new System.Drawing.Point(25, 120);
+            this.characterClassComboBox.Location = new System.Drawing.Point(25, 105);
             this.characterClassComboBox.Name = "characterClassComboBox";
             this.characterClassComboBox.Size = new System.Drawing.Size(182, 33);
             this.characterClassComboBox.TabIndex = 17;
             this.characterClassComboBox.SelectedIndexChanged += new System.EventHandler(this.characterClassComboBox_SelectedIndexChanged);
+            // 
+            // characterEquipmentLabel
+            // 
+            this.characterEquipmentLabel.AutoSize = true;
+            this.characterEquipmentLabel.Location = new System.Drawing.Point(509, 77);
+            this.characterEquipmentLabel.Name = "characterEquipmentLabel";
+            this.characterEquipmentLabel.Size = new System.Drawing.Size(177, 25);
+            this.characterEquipmentLabel.TabIndex = 18;
+            this.characterEquipmentLabel.Text = "Character Equipment";
+            // 
+            // characterListBox
+            // 
+            this.characterListBox.FormattingEnabled = true;
+            this.characterListBox.HorizontalScrollbar = true;
+            this.characterListBox.ItemHeight = 25;
+            this.characterListBox.Location = new System.Drawing.Point(25, 233);
+            this.characterListBox.Name = "characterListBox";
+            this.characterListBox.Size = new System.Drawing.Size(180, 129);
+            this.characterListBox.TabIndex = 19;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 463);
+            this.Controls.Add(this.characterListBox);
+            this.Controls.Add(this.characterEquipmentLabel);
             this.Controls.Add(this.characterClassComboBox);
             this.Controls.Add(this.raceComboBox);
             this.Controls.Add(this.ClassLabel);
@@ -180,12 +195,11 @@ namespace CharacterCreator
             this.Controls.Add(this.listView3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.listView2);
-            this.Controls.Add(this.listView1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.CharacterEquipmentList);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.characterEquipmentList);
+            this.Controls.Add(this.addEquipmentButton);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -195,12 +209,11 @@ namespace CharacterCreator
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListBox CharacterEquipmentList;
+        private System.Windows.Forms.Button addEquipmentButton;
+        private System.Windows.Forms.ListBox characterEquipmentList;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ListView listView2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListView listView3;
@@ -208,6 +221,8 @@ namespace CharacterCreator
         private System.Windows.Forms.Label ClassLabel;
         private System.Windows.Forms.ComboBox raceComboBox;
         private System.Windows.Forms.ComboBox characterClassComboBox;
+        private System.Windows.Forms.Label characterEquipmentLabel;
+        private System.Windows.Forms.ListBox characterListBox;
     }
 }
 

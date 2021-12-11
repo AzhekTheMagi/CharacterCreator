@@ -8,15 +8,13 @@ namespace CharacterCreator
     public class Character : IEquipmentObserver
     {
         string name;
-        string gender;
         IRace race;
         List<IEquipment> equipmentList;
         ICharacterClass characterClass;
 
-        public Character(string name, string gender, IRace race, ICharacterClass characterClass)
+        public Character(string name, IRace race, ICharacterClass characterClass)
         {
             this.name = name;
-            this.gender = gender;
             this.race = race;
             this.characterClass = characterClass;
             this.equipmentList = new List<IEquipment>();
@@ -35,11 +33,6 @@ namespace CharacterCreator
         public string getName()
         {
             return this.name;
-        }
-
-        public string getGender()
-        {
-            return this.gender;
         }
 
         public List<IEquipment> getEquipmentList()
@@ -70,6 +63,12 @@ namespace CharacterCreator
             {
                 return false;
             }
+        }
+
+        //Allows comboBox to display the name of the object.
+        public override string ToString()
+        {
+            return this.name;
         }
     }
 }
