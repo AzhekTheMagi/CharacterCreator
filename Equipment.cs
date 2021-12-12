@@ -14,5 +14,10 @@ namespace CharacterCreator
         public abstract void setWeight(double weight);
         public abstract string getName();
         public abstract void setName(string name);
+
+        public override string ToString()
+        {
+            return this.name;
+        }
     }
 }

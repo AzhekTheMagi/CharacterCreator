@@ -1,55 +1,82 @@
 ﻿using CharacterCreator.Utilities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace CharacterCreator
 {
     public partial class Form1 : Form
     {
-        string race;
-        string characterClass;
         ICharacterFactory characterFactory = new CharacterFactory();
-        List<Character> characters = new List<Character>();
         List<IEquipment> equipmentList = new List<IEquipment>();
+
+        BindingList<Character> characters = new BindingList<Character>();
 
         public Form1()
         {
             InitializeComponent();
-        }
+            characterProfileListView.ShowItemToolTips = true;
 
-        private void raceComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            race = this.raceComboBox.GetItemText(this.raceComboBox.SelectedItem);
-        }
+            MessageBox.Show("Select character in the Character listing to add equipment or see profile");
 
-        private void characterClassComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            characterClass = this.characterClassComboBox.GetItemText(this.characterClassComboBox.SelectedItem);
+            //Binds character list to character listbox.
+            characterListBox.DataSource = characters;
         }
 
         private void addEquipmentButton_Click(object sender, EventArgs e)
         {
+            string equipmentType = InputBox.ShowDialog("Enter Type: Longbow, BattleAxe, Staff", "Item Type");
+            string name = InputBox.ShowDialog("Enter Item Name", "Item Name");
 
+            IEquipment equipment = characterFactory.createEquipment(equipmentType);
+            equipment.setName(name);
+
+            characters[characterListBox.SelectedIndex].addEquipment(equipment);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            string name = InputBox.ShowDialog("Enter Character Name", "Name");
+            string race = this.raceComboBox.GetItemText(this.raceComboBox.SelectedItem);
+            string characterClass = this.characterClassComboBox.GetItemText(this.characterClassComboBox.SelectedItem);
+            
             try
             {
                 IRace characterRace = characterFactory.createRace(race);
                 ICharacterClass charClass = characterFactory.createCharacterClass(characterClass);
-
-                string name = InputBox.ShowDialog("Enter Character Name", "Name");
+                
                 Character tmpCharacter = new Character(name, characterRace, charClass);
                 characters.Add(tmpCharacter);
-
-                characterListBox.Items.Add(tmpCharacter);
             }
             catch (System.ArgumentNullException)
             {
                 MessageBox.Show("Must select race and class to create character.");
             }
+        }
+
+        private void characterListBox_Click(object sender, EventArgs e)
+        {
+            characterProfileListView.Items.Clear();
+
+            string characterRace = characters[characterListBox.SelectedIndex].getRace().ToString();
+            string characterName = characters[characterListBox.SelectedIndex].getName();
+            string characterBio  = characters[characterListBox.SelectedIndex].getRace().getDescription();
+
+            var characterItem = new ListViewItem(new[] { characterRace, characterName, characterBio });
+            characterProfileListView.Items.Add(characterItem);
+
+            if (characters[characterListBox.SelectedIndex].getEquipmentList().Count != 0)
+            {
+                foreach (IEquipment equipmentItem in characters[characterListBox.SelectedIndex].getEquipmentList())
+                {
+                    string equipmentName = equipmentItem.getName();
+                    string equipmentType = equipmentItem.ToString();
+
+                    var equipItem = new ListViewItem(new[] { equipmentName, equipmentType });
+                    characterEquipmentListView.Items.Add(equipItem);
+                }
+            }  
         }
     }
 }
