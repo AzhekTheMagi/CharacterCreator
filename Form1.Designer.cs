@@ -47,7 +47,7 @@ namespace CharacterCreator
             // 
             // addEquipmentButton
             // 
-            this.addEquipmentButton.Location = new System.Drawing.Point(509, 25);
+            this.addEquipmentButton.Location = new System.Drawing.Point(25, 380);
             this.addEquipmentButton.Name = "addEquipmentButton";
             this.addEquipmentButton.Size = new System.Drawing.Size(182, 34);
             this.addEquipmentButton.TabIndex = 0;
@@ -59,9 +59,9 @@ namespace CharacterCreator
             // 
             this.characterEquipmentList.FormattingEnabled = true;
             this.characterEquipmentList.ItemHeight = 25;
-            this.characterEquipmentList.Location = new System.Drawing.Point(509, 126);
+            this.characterEquipmentList.Location = new System.Drawing.Point(473, 41);
             this.characterEquipmentList.Name = "characterEquipmentList";
-            this.characterEquipmentList.Size = new System.Drawing.Size(182, 104);
+            this.characterEquipmentList.Size = new System.Drawing.Size(182, 129);
             this.characterEquipmentList.TabIndex = 3;
             // 
             // button2
@@ -142,12 +142,11 @@ namespace CharacterCreator
             this.raceComboBox.FormattingEnabled = true;
             this.raceComboBox.Items.AddRange(new object[] {
             "Elf",
-            "Ork"});
+            "Orc"});
             this.raceComboBox.Location = new System.Drawing.Point(25, 41);
             this.raceComboBox.Name = "raceComboBox";
             this.raceComboBox.Size = new System.Drawing.Size(182, 33);
             this.raceComboBox.TabIndex = 16;
-            this.raceComboBox.SelectedIndexChanged += new System.EventHandler(this.raceComboBox_SelectedIndexChanged);
             // 
             // characterClassComboBox
             // 
@@ -160,12 +159,11 @@ namespace CharacterCreator
             this.characterClassComboBox.Name = "characterClassComboBox";
             this.characterClassComboBox.Size = new System.Drawing.Size(182, 33);
             this.characterClassComboBox.TabIndex = 17;
-            this.characterClassComboBox.SelectedIndexChanged += new System.EventHandler(this.characterClassComboBox_SelectedIndexChanged);
             // 
             // characterEquipmentLabel
             // 
             this.characterEquipmentLabel.AutoSize = true;
-            this.characterEquipmentLabel.Location = new System.Drawing.Point(509, 77);
+            this.characterEquipmentLabel.Location = new System.Drawing.Point(473, 13);
             this.characterEquipmentLabel.Name = "characterEquipmentLabel";
             this.characterEquipmentLabel.Size = new System.Drawing.Size(177, 25);
             this.characterEquipmentLabel.TabIndex = 18;
