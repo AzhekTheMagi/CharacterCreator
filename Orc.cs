@@ -6,11 +6,9 @@ namespace CharacterCreator
 {
     public class Orc : IRace
     {
-        private string description = "Orcs are disfigured humanoid carnivores, standing approximately 5'11 to 6'2, " +
-            "weighing from 180 to 280 lbs. They are easily noticeable due to their green to gray skin, lupine ears, " +
-            "lower canines resembling boar tusks, and their muscular builds. Orcs stand in a bent over shape making " +
-            "them appear as ape-like humans.";
+        private string description = "Aggressive, warlike, & live in clans";
         private string name;
+        private string raceType = "Orc";
 
         public string getName()
         {
@@ -25,6 +23,11 @@ namespace CharacterCreator
         public string getDescription()
         {
             return this.description;
+        }
+
+        public override string ToString()
+        {
+            return this.raceType;
         }
     }
 }

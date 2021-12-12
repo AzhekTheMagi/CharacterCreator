@@ -40,5 +40,10 @@ namespace CharacterCreator
         {
             base.name = name;
         }
+
+        public override string ToString()
+        {
+            return "BattleAxe";
+        }
     }
 }

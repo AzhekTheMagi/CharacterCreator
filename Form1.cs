@@ -16,6 +16,10 @@ namespace CharacterCreator
         public Form1()
         {
             InitializeComponent();
+            characterProfileListView.ShowItemToolTips = true;
+
+            MessageBox.Show("Select character in the Character listing to add equipment or see profile");
+
             //Binds character list to character listbox.
             characterListBox.DataSource = characters;
         }
@@ -49,6 +53,30 @@ namespace CharacterCreator
             {
                 MessageBox.Show("Must select race and class to create character.");
             }
+        }
+
+        private void characterListBox_Click(object sender, EventArgs e)
+        {
+            characterProfileListView.Items.Clear();
+
+            string characterRace = characters[characterListBox.SelectedIndex].getRace().ToString();
+            string characterName = characters[characterListBox.SelectedIndex].getName();
+            string characterBio  = characters[characterListBox.SelectedIndex].getRace().getDescription();
+
+            var characterItem = new ListViewItem(new[] { characterRace, characterName, characterBio });
+            characterProfileListView.Items.Add(characterItem);
+
+            if (characters[characterListBox.SelectedIndex].getEquipmentList().Count != 0)
+            {
+                foreach (IEquipment equipmentItem in characters[characterListBox.SelectedIndex].getEquipmentList())
+                {
+                    string equipmentName = equipmentItem.getName();
+                    string equipmentType = equipmentItem.ToString();
+
+                    var equipItem = new ListViewItem(new[] { equipmentName, equipmentType });
+                    characterEquipmentListView.Items.Add(equipItem);
+                }
+            }  
         }
     }
 }

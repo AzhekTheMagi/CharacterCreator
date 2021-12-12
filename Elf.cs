@@ -6,11 +6,9 @@ namespace CharacterCreator
 {
     public class Elf : IRace
     {
-        private string description = "Elves are a magical people of otherworldly grace, living in the" +
-            " world but not entirely part of it. They live in places of ethereal beauty, in the midst of" +
-            " ancient forests or in silvery spires glittering with faerie light, where soft music drifts" +
-            " through the air and gentle fragrances waft on the breeze";
+        private string description = "Magical, graceful, pointy earred, & hates orcs.";
         private string name;
+        private string raceType = "Elf";
 
         public string getName()
         {
@@ -25,6 +23,11 @@ namespace CharacterCreator
         public string getDescription()
         {
             return this.description;
+        }
+
+        public override string ToString()
+        {
+            return this.raceType;
         }
     }
 }
