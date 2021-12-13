@@ -4,6 +4,7 @@ using System.Text;
 
 namespace CharacterCreator
 {
+    [Serializable]
     public abstract class Equipment : IEquipment
     {
         protected double weight;

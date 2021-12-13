@@ -5,6 +5,7 @@ using System.Text;
 
 namespace CharacterCreator
 {
+    [Serializable]
     public class Character : IEquipmentObserver
     {
         string name;

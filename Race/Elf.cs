@@ -4,6 +4,7 @@ using System.Text;
 
 namespace CharacterCreator
 {
+    [Serializable]
     public class Elf : IRace
     {
         private string description = "Magical, graceful, pointy earred, & hates orcs.";

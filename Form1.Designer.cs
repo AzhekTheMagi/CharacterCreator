@@ -30,7 +30,7 @@ namespace CharacterCreator
         private void InitializeComponent()
         {
             this.addEquipmentButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.createCharacterButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -52,6 +52,8 @@ namespace CharacterCreator
             this.addMagicTraitEquipmentButton = new System.Windows.Forms.Button();
             this.equipPartyInventoryButton = new System.Windows.Forms.Button();
             this.addPartyItemButton = new System.Windows.Forms.Button();
+            this.saveCharacterButton = new System.Windows.Forms.Button();
+            this.loadCharacterListButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // addEquipmentButton
@@ -64,15 +66,15 @@ namespace CharacterCreator
             this.addEquipmentButton.UseVisualStyleBackColor = true;
             this.addEquipmentButton.Click += new System.EventHandler(this.addEquipmentButton_Click);
             // 
-            // button2
+            // createCharacterButton
             // 
-            this.button2.Location = new System.Drawing.Point(25, 153);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(182, 34);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Create Character";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.createCharacterButton.Location = new System.Drawing.Point(25, 153);
+            this.createCharacterButton.Name = "createCharacterButton";
+            this.createCharacterButton.Size = new System.Drawing.Size(182, 34);
+            this.createCharacterButton.TabIndex = 5;
+            this.createCharacterButton.Text = "Create Character";
+            this.createCharacterButton.UseVisualStyleBackColor = true;
+            this.createCharacterButton.Click += new System.EventHandler(this.button2_Click);
             // 
             // label2
             // 
@@ -258,11 +260,33 @@ namespace CharacterCreator
             this.addPartyItemButton.Text = "Add Item to Party";
             this.addPartyItemButton.UseVisualStyleBackColor = true;
             // 
+            // saveCharacterButton
+            // 
+            this.saveCharacterButton.Location = new System.Drawing.Point(27, 416);
+            this.saveCharacterButton.Name = "saveCharacterButton";
+            this.saveCharacterButton.Size = new System.Drawing.Size(180, 34);
+            this.saveCharacterButton.TabIndex = 25;
+            this.saveCharacterButton.Text = "Save Character";
+            this.saveCharacterButton.UseVisualStyleBackColor = true;
+            this.saveCharacterButton.Click += new System.EventHandler(this.saveCharacterButton_Click);
+            // 
+            // loadCharacterListButton
+            // 
+            this.loadCharacterListButton.Location = new System.Drawing.Point(27, 457);
+            this.loadCharacterListButton.Name = "loadCharacterListButton";
+            this.loadCharacterListButton.Size = new System.Drawing.Size(178, 34);
+            this.loadCharacterListButton.TabIndex = 26;
+            this.loadCharacterListButton.Text = "Load Character List";
+            this.loadCharacterListButton.UseVisualStyleBackColor = true;
+            this.loadCharacterListButton.Click += new System.EventHandler(this.loadCharacterListButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 463);
+            this.ClientSize = new System.Drawing.Size(800, 499);
+            this.Controls.Add(this.loadCharacterListButton);
+            this.Controls.Add(this.saveCharacterButton);
             this.Controls.Add(this.addPartyItemButton);
             this.Controls.Add(this.equipPartyInventoryButton);
             this.Controls.Add(this.addMagicTraitEquipmentButton);
@@ -278,7 +302,7 @@ namespace CharacterCreator
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.createCharacterButton);
             this.Controls.Add(this.addEquipmentButton);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -290,7 +314,7 @@ namespace CharacterCreator
         #endregion
 
         private System.Windows.Forms.Button addEquipmentButton;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button createCharacterButton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -312,6 +336,8 @@ namespace CharacterCreator
         private System.Windows.Forms.ColumnHeader columnMagicTrait;
         private System.Windows.Forms.Button equipPartyInventoryButton;
         private System.Windows.Forms.Button addPartyItemButton;
+        private System.Windows.Forms.Button saveCharacterButton;
+        private System.Windows.Forms.Button loadCharacterListButton;
     }
 }
 

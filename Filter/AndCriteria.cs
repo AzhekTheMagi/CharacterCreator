@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace CharacterCreator.Filter
@@ -15,9 +16,9 @@ namespace CharacterCreator.Filter
             this.otherCriteria  = otherCriteria;
         }
 
-        public List<Character> meetCriteria(List<Character> characters)
+        public BindingList<Character> meetCriteria(BindingList<Character> characters)
         {
-            List<Character> firstCriteriaCharacter = this.filterCriteria.meetCriteria(characters);
+            BindingList<Character> firstCriteriaCharacter = this.filterCriteria.meetCriteria(characters);
 
             return this.otherCriteria.meetCriteria(firstCriteriaCharacter);
         }

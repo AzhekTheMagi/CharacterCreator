@@ -4,6 +4,7 @@ using System.Text;
 
 namespace CharacterCreator.Decorator
 {
+    [Serializable]
     public abstract class EquipmentDecorator : IEquipment
     {
         protected IEquipment equipment;
