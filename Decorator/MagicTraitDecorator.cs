@@ -7,6 +7,7 @@ namespace CharacterCreator.Decorator
     public class MagicTraitDecorator : EquipmentDecorator
     {
         string magicTrait;
+        string type;
 
         public MagicTraitDecorator(IEquipment equipment)
         {
@@ -18,9 +19,19 @@ namespace CharacterCreator.Decorator
             return this.magicTrait;
         }
 
-        public void setMagicTrait(string magicTrait)
+        public void setMagicTrait(string trait)
         {
-            this.magicTrait = magicTrait;
+            this.magicTrait = trait;
+        }
+
+        public void setType(string type)
+        {
+            this.type = type;
+        }
+
+        public override string ToString()
+        {
+            return this.type;
         }
     }
 }

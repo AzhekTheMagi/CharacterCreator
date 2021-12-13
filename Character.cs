@@ -65,6 +65,11 @@ namespace CharacterCreator
             }
         }
 
+        public IEquipment getEquipment(int index)
+        {
+            return this.equipmentList[index];
+        }
+
         //Allows comboBox to display the name of the object.
         public override string ToString()
         {

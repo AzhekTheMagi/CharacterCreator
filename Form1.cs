@@ -1,7 +1,9 @@
-﻿using CharacterCreator.Utilities;
+﻿using CharacterCreator.Decorator;
+using CharacterCreator.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace CharacterCreator
@@ -16,7 +18,9 @@ namespace CharacterCreator
         public Form1()
         {
             InitializeComponent();
+
             characterProfileListView.ShowItemToolTips = true;
+            characterEquipmentListView.ShowItemToolTips = true;
 
             MessageBox.Show("Select character in the Character listing to add equipment or see profile");
 
@@ -58,6 +62,7 @@ namespace CharacterCreator
         private void characterListBox_Click(object sender, EventArgs e)
         {
             characterProfileListView.Items.Clear();
+            characterEquipmentListView.Items.Clear();
 
             string characterRace = characters[characterListBox.SelectedIndex].getRace().ToString();
             string characterName = characters[characterListBox.SelectedIndex].getName();
@@ -73,10 +78,44 @@ namespace CharacterCreator
                     string equipmentName = equipmentItem.getName();
                     string equipmentType = equipmentItem.ToString();
 
-                    var equipItem = new ListViewItem(new[] { equipmentName, equipmentType });
+                    var magicType = typeof(MagicTraitDecorator);
+                    var equipItem = new ListViewItem();
+
+                    if (!magicType.IsInstanceOfType(equipmentItem))
+                    {
+                        equipItem = new ListViewItem(new[] { equipmentType, equipmentName, "None" });
+                    }
+                    else
+                    {
+                        MagicTraitDecorator tmpDecorator = (MagicTraitDecorator)equipmentItem;
+                        equipItem = new ListViewItem(new[] { equipmentType, equipmentName, tmpDecorator.getMagicTrait() });
+                    }
+                    
                     characterEquipmentListView.Items.Add(equipItem);
                 }
             }  
+        }
+
+        private void addMagicTraitEquipment_Click(object sender, EventArgs e)
+        {
+            string magicTrait = InputBox.ShowDialog("Enter magic trait, e.g. Ghost Site", "Trait");
+            string equipmentName = characterEquipmentListView.SelectedItems[0].SubItems[1].Text;
+            int index = characters[characterListBox.SelectedIndex].getEquipmentList().FindIndex(x => x.getName() == equipmentName);
+
+            foreach (IEquipment equipmentItem in characters[characterListBox.SelectedIndex].getEquipmentList())
+            {
+                if (equipmentItem.getName().Contains(equipmentName))
+                {
+                    MagicTraitDecorator decorated = new MagicTraitDecorator(equipmentItem);
+                    decorated.setMagicTrait(magicTrait);
+                    decorated.setType(equipmentItem.ToString());
+                    characters[characterListBox.SelectedIndex].getEquipmentList().IndexOf(equipmentItem);
+                    characters[characterListBox.SelectedIndex].getEquipmentList().Remove(equipmentItem);
+                    characters[characterListBox.SelectedIndex].getEquipmentList().Add(decorated);
+
+                    break;
+                }
+            }
         }
     }
 }
