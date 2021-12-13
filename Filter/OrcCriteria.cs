@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.ComponentModel;
 
 namespace CharacterCreator.Filter
 {
     public class OrcCriteria : IFilterCriteria
     {
-        public List<Character> meetCriteria(List<Character> characters)
+        public BindingList<Character> meetCriteria(BindingList<Character> characters)
         {
-            List<Character> orcCharacters = new List<Character>();
+            BindingList<Character> orcCharacters = new BindingList<Character>();
             IRace orc = new Orc();
 
             foreach (Character character in characters)
             {
-                if (character.getRace().Equals(orc))
+                if (character.getRace().ToString().Contains("Orc"))
                 {
                     orcCharacters.Add(character);
                 }

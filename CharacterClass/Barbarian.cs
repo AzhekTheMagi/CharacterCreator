@@ -4,6 +4,7 @@ using System.Text;
 
 namespace CharacterCreator
 {
+    [Serializable]
     public class Barbarian : ICharacterClass
     {
         private int strengthModifier = 4;

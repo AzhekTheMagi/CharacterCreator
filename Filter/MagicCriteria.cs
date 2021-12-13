@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace CharacterCreator.Filter
 {
     public class MagicCriteria : IFilterCriteria
     {
-        public List<Character> meetCriteria(List<Character> characters)
+        public BindingList<Character> meetCriteria(BindingList<Character> characters)
         {
-            List<Character> magicCharacters = new List<Character>();
+            BindingList<Character> magicCharacters = new BindingList<Character>();
             IRace elf = new Elf();
 
             foreach (Character character in characters)
             {
-                if (character.getRace().Equals(elf))
+                if (character.getRace().ToString().Contains("Elf"))
                 {
                     magicCharacters.Add(character);
                 }

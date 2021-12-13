@@ -4,6 +4,7 @@ using System.Text;
 
 namespace CharacterCreator
 {
+    [Serializable]
     public class Staff : Equipment
     {
         List<string> properties;

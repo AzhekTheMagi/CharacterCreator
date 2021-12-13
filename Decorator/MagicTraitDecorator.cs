@@ -4,6 +4,7 @@ using System.Text;
 
 namespace CharacterCreator.Decorator
 {
+    [Serializable]
     public class MagicTraitDecorator : EquipmentDecorator
     {
         string magicTrait;

@@ -4,6 +4,7 @@ using System.Text;
 
 namespace CharacterCreator
 {
+    [Serializable]
     public class Orc : IRace
     {
         private string description = "Aggressive, warlike, & live in clans";
