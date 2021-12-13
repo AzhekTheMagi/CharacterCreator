@@ -48,8 +48,10 @@ namespace CharacterCreator
             this.characterEquipmentListView = new System.Windows.Forms.ListView();
             this.columnEquipmentType = new System.Windows.Forms.ColumnHeader();
             this.columnEquipmentName = new System.Windows.Forms.ColumnHeader();
-            this.addMagicTraitEquipmentButton = new System.Windows.Forms.Button();
             this.columnMagicTrait = new System.Windows.Forms.ColumnHeader();
+            this.addMagicTraitEquipmentButton = new System.Windows.Forms.Button();
+            this.equipPartyInventoryButton = new System.Windows.Forms.Button();
+            this.addPartyItemButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // addEquipmentButton
@@ -222,9 +224,14 @@ namespace CharacterCreator
             this.columnEquipmentName.Text = "Name";
             this.columnEquipmentName.Width = 100;
             // 
+            // columnMagicTrait
+            // 
+            this.columnMagicTrait.Text = "Magic Trait";
+            this.columnMagicTrait.Width = 120;
+            // 
             // addMagicTraitEquipmentButton
             // 
-            this.addMagicTraitEquipmentButton.Location = new System.Drawing.Point(27, 418);
+            this.addMagicTraitEquipmentButton.Location = new System.Drawing.Point(252, 377);
             this.addMagicTraitEquipmentButton.Name = "addMagicTraitEquipmentButton";
             this.addMagicTraitEquipmentButton.Size = new System.Drawing.Size(182, 34);
             this.addMagicTraitEquipmentButton.TabIndex = 22;
@@ -232,16 +239,32 @@ namespace CharacterCreator
             this.addMagicTraitEquipmentButton.UseVisualStyleBackColor = true;
             this.addMagicTraitEquipmentButton.Click += new System.EventHandler(this.addMagicTraitEquipment_Click);
             // 
-            // columnMagicTrait
+            // equipPartyInventoryButton
             // 
-            this.columnMagicTrait.Text = "Magic Trait";
-            this.columnMagicTrait.Width = 120;
+            this.equipPartyInventoryButton.Location = new System.Drawing.Point(597, 417);
+            this.equipPartyInventoryButton.Name = "equipPartyInventoryButton";
+            this.equipPartyInventoryButton.Size = new System.Drawing.Size(180, 34);
+            this.equipPartyInventoryButton.TabIndex = 23;
+            this.equipPartyInventoryButton.Text = "Equip Item";
+            this.equipPartyInventoryButton.UseVisualStyleBackColor = true;
+            this.equipPartyInventoryButton.Click += new System.EventHandler(this.equipPartyInventoryButton_Click);
+            // 
+            // addPartyItemButton
+            // 
+            this.addPartyItemButton.Location = new System.Drawing.Point(597, 377);
+            this.addPartyItemButton.Name = "addPartyItemButton";
+            this.addPartyItemButton.Size = new System.Drawing.Size(182, 34);
+            this.addPartyItemButton.TabIndex = 24;
+            this.addPartyItemButton.Text = "Add Item to Party";
+            this.addPartyItemButton.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 463);
+            this.Controls.Add(this.addPartyItemButton);
+            this.Controls.Add(this.equipPartyInventoryButton);
             this.Controls.Add(this.addMagicTraitEquipmentButton);
             this.Controls.Add(this.characterEquipmentListView);
             this.Controls.Add(this.partyInventoryListBox);
@@ -287,6 +310,8 @@ namespace CharacterCreator
         private System.Windows.Forms.ColumnHeader columnEquipmentName;
         private System.Windows.Forms.Button addMagicTraitEquipmentButton;
         private System.Windows.Forms.ColumnHeader columnMagicTrait;
+        private System.Windows.Forms.Button equipPartyInventoryButton;
+        private System.Windows.Forms.Button addPartyItemButton;
     }
 }
 
