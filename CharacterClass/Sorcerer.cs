@@ -4,6 +4,7 @@ using System.Text;
 
 namespace CharacterCreator
 {
+    [Serializable]
     public class Sorcerer : ICharacterClass 
     {
         private int mana = 10;

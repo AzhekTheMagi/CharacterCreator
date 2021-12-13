@@ -4,6 +4,7 @@ using System.Text;
 
 namespace CharacterCreator
 {
+    [Serializable]
     public class Ranger : ICharacterClass
     {
         private int attackModifier = 2;
