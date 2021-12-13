@@ -22,7 +22,7 @@ namespace CharacterCreator
             characterProfileListView.ShowItemToolTips = true;
             characterEquipmentListView.ShowItemToolTips = true;
 
-            MessageBox.Show("Select character in the Character listing to add equipment or see profile");
+            MessageBox.Show("Select character in character listing to add equipment, see profile, and refresh character equipment inventory.");
 
             //Binds character list to character listbox.
             characterListBox.DataSource = characters;
