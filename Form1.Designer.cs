@@ -48,11 +48,13 @@ namespace CharacterCreator
             this.characterEquipmentListView = new System.Windows.Forms.ListView();
             this.columnEquipmentType = new System.Windows.Forms.ColumnHeader();
             this.columnEquipmentName = new System.Windows.Forms.ColumnHeader();
+            this.addMagicTraitEquipmentButton = new System.Windows.Forms.Button();
+            this.columnMagicTrait = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // addEquipmentButton
             // 
-            this.addEquipmentButton.Location = new System.Drawing.Point(25, 380);
+            this.addEquipmentButton.Location = new System.Drawing.Point(27, 377);
             this.addEquipmentButton.Name = "addEquipmentButton";
             this.addEquipmentButton.Size = new System.Drawing.Size(182, 34);
             this.addEquipmentButton.TabIndex = 0;
@@ -199,11 +201,13 @@ namespace CharacterCreator
             // 
             this.characterEquipmentListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnEquipmentType,
-            this.columnEquipmentName});
+            this.columnEquipmentName,
+            this.columnMagicTrait});
             this.characterEquipmentListView.HideSelection = false;
             this.characterEquipmentListView.Location = new System.Drawing.Point(252, 234);
+            this.characterEquipmentListView.MultiSelect = false;
             this.characterEquipmentListView.Name = "characterEquipmentListView";
-            this.characterEquipmentListView.Size = new System.Drawing.Size(224, 129);
+            this.characterEquipmentListView.Size = new System.Drawing.Size(313, 129);
             this.characterEquipmentListView.TabIndex = 21;
             this.characterEquipmentListView.UseCompatibleStateImageBehavior = false;
             this.characterEquipmentListView.View = System.Windows.Forms.View.Details;
@@ -218,11 +222,27 @@ namespace CharacterCreator
             this.columnEquipmentName.Text = "Name";
             this.columnEquipmentName.Width = 100;
             // 
+            // addMagicTraitEquipmentButton
+            // 
+            this.addMagicTraitEquipmentButton.Location = new System.Drawing.Point(27, 418);
+            this.addMagicTraitEquipmentButton.Name = "addMagicTraitEquipmentButton";
+            this.addMagicTraitEquipmentButton.Size = new System.Drawing.Size(182, 34);
+            this.addMagicTraitEquipmentButton.TabIndex = 22;
+            this.addMagicTraitEquipmentButton.Text = "Add Magic Trait";
+            this.addMagicTraitEquipmentButton.UseVisualStyleBackColor = true;
+            this.addMagicTraitEquipmentButton.Click += new System.EventHandler(this.addMagicTraitEquipment_Click);
+            // 
+            // columnMagicTrait
+            // 
+            this.columnMagicTrait.Text = "Magic Trait";
+            this.columnMagicTrait.Width = 120;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 463);
+            this.Controls.Add(this.addMagicTraitEquipmentButton);
             this.Controls.Add(this.characterEquipmentListView);
             this.Controls.Add(this.partyInventoryListBox);
             this.Controls.Add(this.characterListBox);
@@ -265,6 +285,8 @@ namespace CharacterCreator
         private System.Windows.Forms.ListView characterEquipmentListView;
         private System.Windows.Forms.ColumnHeader columnEquipmentType;
         private System.Windows.Forms.ColumnHeader columnEquipmentName;
+        private System.Windows.Forms.Button addMagicTraitEquipmentButton;
+        private System.Windows.Forms.ColumnHeader columnMagicTrait;
     }
 }
 
