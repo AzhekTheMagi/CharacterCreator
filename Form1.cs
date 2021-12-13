@@ -30,23 +30,34 @@ namespace CharacterCreator
 
         private void addEquipmentButton_Click(object sender, EventArgs e)
         {
-            string equipmentType = InputBox.ShowDialog("Enter Type: Longbow, BattleAxe, Staff", "Item Type");
-            string name = InputBox.ShowDialog("Enter Item Name", "Item Name");
+            try
+            {
+                string equipmentType = InputBox.ShowDialog("Enter Type: Longbow, BattleAxe, Staff", "Item Type");
+                string name = InputBox.ShowDialog("Enter Item Name", "Item Name");
 
-            IEquipment equipment = characterFactory.createEquipment(equipmentType);
-            equipment.setName(name);
+                IEquipment equipment = characterFactory.createEquipment(equipmentType);
+                equipment.setName(name);
 
-            characters[characterListBox.SelectedIndex].addEquipment(equipment);
+                characters[characterListBox.SelectedIndex].addEquipment(equipment);
+            }
+            catch (ArgumentNullException)
+            {
+                MessageBox.Show("Must create character first before adding equipment!");
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Must create character first before adding equipment!");
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
-            string name = InputBox.ShowDialog("Enter Character Name", "Name");
-            string race = this.raceComboBox.GetItemText(this.raceComboBox.SelectedItem);
-            string characterClass = this.characterClassComboBox.GetItemText(this.characterClassComboBox.SelectedItem);
-            
+        {  
             try
             {
+                string name = InputBox.ShowDialog("Enter Character Name", "Name");
+                string race = this.raceComboBox.GetItemText(this.raceComboBox.SelectedItem);
+                string characterClass = this.characterClassComboBox.GetItemText(this.characterClassComboBox.SelectedItem);
+
                 IRace characterRace = characterFactory.createRace(race);
                 ICharacterClass charClass = characterFactory.createCharacterClass(characterClass);
                 
@@ -98,24 +109,35 @@ namespace CharacterCreator
 
         private void addMagicTraitEquipment_Click(object sender, EventArgs e)
         {
-            string magicTrait = InputBox.ShowDialog("Enter magic trait, e.g. Ghost Site", "Trait");
-            string equipmentName = characterEquipmentListView.SelectedItems[0].SubItems[1].Text;
-            int index = characters[characterListBox.SelectedIndex].getEquipmentList().FindIndex(x => x.getName() == equipmentName);
-
-            foreach (IEquipment equipmentItem in characters[characterListBox.SelectedIndex].getEquipmentList())
+            try
             {
-                if (equipmentItem.getName().Contains(equipmentName))
-                {
-                    MagicTraitDecorator decorated = new MagicTraitDecorator(equipmentItem);
-                    decorated.setMagicTrait(magicTrait);
-                    decorated.setType(equipmentItem.ToString());
-                    characters[characterListBox.SelectedIndex].getEquipmentList().IndexOf(equipmentItem);
-                    characters[characterListBox.SelectedIndex].getEquipmentList().Remove(equipmentItem);
-                    characters[characterListBox.SelectedIndex].getEquipmentList().Add(decorated);
+                string equipmentName = characterEquipmentListView.SelectedItems[0].SubItems[1].Text;
+                int index = characters[characterListBox.SelectedIndex].getEquipmentList().FindIndex(x => x.getName() == equipmentName);
 
-                    break;
+                foreach (IEquipment equipmentItem in characters[characterListBox.SelectedIndex].getEquipmentList())
+                {
+                    if (equipmentItem.getName().Contains(equipmentName))
+                    {
+                        MagicTraitDecorator decorated = new MagicTraitDecorator(equipmentItem);
+                        decorated.setMagicTrait(InputBox.ShowDialog("Enter magic trait, e.g. Ghost Site", "Trait"));
+                        decorated.setType(equipmentItem.ToString());
+                        characters[characterListBox.SelectedIndex].getEquipmentList().IndexOf(equipmentItem);
+                        characters[characterListBox.SelectedIndex].getEquipmentList().Remove(equipmentItem);
+                        characters[characterListBox.SelectedIndex].getEquipmentList().Add(decorated);
+
+                        break;
+                    }
                 }
             }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Must select weapon prior to adding magic trait.");
+            }
+        }
+
+        private void equipPartyInventoryButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
